@@ -27,12 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Data pengguna tidak lengkap" }, { status: 400 })
     }
 
-    // Hash password
-    // Catatan: Dalam implementasi nyata, password harus di-hash
-    // Contoh dengan bcrypt:
-    // const hashedPassword = await bcrypt.hash(userData.password, 10);
-    // userData.password = hashedPassword;
-
+    // Password hashing is handled by the createUser model function.
     const id = await createUser(userData)
 
     if (!id) {

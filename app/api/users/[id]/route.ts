@@ -25,13 +25,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const id = params.id
     const userData = await request.json()
 
-    // Jika ada password baru, hash password
-    if (userData.password) {
-      // Catatan: Dalam implementasi nyata, password harus di-hash
-      // Contoh dengan bcrypt:
-      // userData.password = await bcrypt.hash(userData.password, 10);
-    }
-
+    // Jika ada password baru, hashing akan ditangani oleh updateUser model function.
     const updated = await updateUser(id, userData)
 
     if (!updated) {
